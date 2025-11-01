@@ -26,7 +26,7 @@ jobs:
           bun build --compile --minify --sourcemap \
             --target=bun-linux-x64 \
             ./index.ts \
-            --outfile myapp
+            --outfile dumoinference
 
       - name: Setup SSH
         run: |
@@ -39,15 +39,22 @@ jobs:
         run: |
           scp -i ~/.ssh/deploy_key \
             -P ${{ secrets.SSH_PORT }} \
-            myapp \
-            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/path/to/deploy/myapp
+            dumoinference \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/dumoinference
+
+      - name: Create _dumointernal.json
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            -p ${{ secrets.SSH_PORT }} \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "echo '{\"port\": ${{ secrets.PORT }}}' > ~/_dumointernal.json"
 
       - name: Restart with PM2
         run: |
           ssh -i ~/.ssh/deploy_key \
             -p ${{ secrets.SSH_PORT }} \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "pm2 restart myapp || pm2 start /path/to/deploy/myapp --name myapp"
+            "pm2 restart dumoinference || pm2 start ~/dumoinference --name dumoinference"
 
       - name: Cleanup
         if: always()
