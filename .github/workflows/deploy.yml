@@ -54,7 +54,7 @@ jobs:
           ssh -i ~/.ssh/deploy_key \
             -p ${{ secrets.SSH_PORT }} \
             ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
-            "source ~/.bashrc && pm2 restart dumoinference || pm2 start ~/dumoinference --name dumoinference"
+            "${{ secrets.PM2_PATH }} restart dumoinference || ${{ secrets.PM2_PATH }} start ~/dumoinference --name dumoinference"
 
       - name: Cleanup
         if: always()
