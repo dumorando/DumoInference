@@ -4,6 +4,7 @@
     "": {
       "name": "dumoinference",
       "dependencies": {
+        "@elysiajs/cors": "^1.4.0",
         "@openrouter/sdk": "^0.0.1",
         "elysia": "^1.4.13",
         "openai": "^6.7.0",
@@ -19,6 +20,8 @@
   },
   "packages": {
     "@borewit/text-codec": ["@borewit/text-codec@0.1.1", "", {}, "sha512-5L/uBxmjaCIX5h8Z+uu+kA9BQLkc/Wl06UGR5ajNRxu+/XjonB5i8JpgFMrPj3LXTCPA0pv8yxUvbUi+QthGGA=="],
+
+    "@elysiajs/cors": ["@elysiajs/cors@1.4.0", "", { "peerDependencies": { "elysia": ">= 1.4.0" } }, "sha512-pb0SCzBfFbFSYA/U40HHO7R+YrcXBJXOWgL20eSViK33ol1e20ru2/KUaZYo5IMUn63yaTJI/bQERuQ+77ND8g=="],
 
     "@openrouter/sdk": ["@openrouter/sdk@0.0.1", "", { "dependencies": { "zod": "^3.25.0 || ^4.0.0" }, "peerDependencies": { "@tanstack/react-query": "^5", "react": "^18 || ^19", "react-dom": "^18 || ^19" }, "optionalPeers": ["@tanstack/react-query", "react", "react-dom"] }, "sha512-/ux3klrcMp4XKHFBNGIghhiDfCaRphM+CcxPFbQPN50uJRKm4UvPK+n4L/6BbiFU2v9glmYB+rFh506+Bk5nUg=="],
 
