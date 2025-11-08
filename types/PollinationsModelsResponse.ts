@@ -6,7 +6,7 @@ export interface PollinationsModelsResponse {
     tier: string,
     community: boolean,
     input_modalities: Array<'text' | 'image' | 'audio'>,
-    output_modalities: Array<'text' | 'image' | 'audio'>,
+    output_modalities: Array<'text' | 'image'>,
     tools: boolean,
     aliases: Array<string>,
     vision: boolean,

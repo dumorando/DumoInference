@@ -1,15 +1,13 @@
 import Elysia from "elysia";
-import GetModels from "./misc/GetModels";
-import ChatCompletions from "./misc/ChatCompletions";
 import getPort from "./misc/GetPort";
 import cors from "@elysiajs/cors";
+import v1beta from './src/v1beta';
+import v2 from "./src/v2";
 
 const PORT = getPort();
 
 new Elysia()
     .use(cors())
-    .get('/v1beta/models', async () => {
-        return await GetModels();
-    })
-    .use(ChatCompletions)
+    .use(v1beta)
+    .use(v2)
     .listen(PORT, () => console.log(`listening on http://localhost:${PORT}`));

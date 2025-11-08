@@ -1,11 +1,11 @@
 import Elysia, { sse, status } from "elysia";
-import GetModels from "./GetModels";
+import { GetModelsOpenAI } from "./GetModels";
 import OpenAI from "openai";
 import z from 'zod';
 
 const handler = new Elysia({ prefix: '/v1beta/chat/completions'})
     .post('/', async function*({ body, set }) {
-        const models = (await GetModels()).data.map(item => item.id);
+        const models = (await GetModelsOpenAI()).data.map(item => item.id);
 
         if (!models.includes(body.model)) {
             return status(400, {
